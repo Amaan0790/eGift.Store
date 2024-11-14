@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace eGift.Store.Razor.Models.ViewModels
 {
@@ -79,7 +80,8 @@ namespace eGift.Store.Razor.Models.ViewModels
         [Display(Name = "Role")]
         public string? RoleName { get; set; }
 
-        [Display(Name = "ProfileImage")]
+        [NotMapped]
+        [Display(Name = "Profile Image")]
         public IFormFile? ProfileImage { get; set; }
 
         #endregion View Models

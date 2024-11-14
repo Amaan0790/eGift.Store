@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace eGift.Store.Razor.Models.ViewModels
 {
@@ -92,18 +93,23 @@ namespace eGift.Store.Razor.Models.ViewModels
 
         #region View Models
 
+        [NotMapped]
         [Display(Name = "ImageUrl")]
         public IFormFile? ImageUrl { get; set; }
 
+        [NotMapped]
         [Display(Name = "Picture1")]
         public IFormFile? Picture1 { get; set; }
 
+        [NotMapped]
         [Display(Name = "Picture2")]
         public IFormFile? Picture2 { get; set; }
 
+        [NotMapped]
         [Display(Name = "Picture3")]
         public IFormFile? Picture3 { get; set; }
 
+        [NotMapped]
         [Display(Name = "Picture4")]
         public IFormFile? Picture4 { get; set; }
 
