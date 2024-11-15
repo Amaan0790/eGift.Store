@@ -12,6 +12,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - @ViewData["ApplicationName"]</title>
+
     <!--CSS-->
     <!--Bootstrap Css-->
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
@@ -20,6 +21,15 @@
     <!--Styles Css-->
     <link rel="stylesheet" href="~/eGift.Store.Razor.styles.css" asp-append-version="true" />
 
+    <!--Datatable Css-->
+    <link href="~/lib/datatable/datatable.css" rel="stylesheet" />
+    <!--Font-Awesome Css-->
+    <link href="~/lib/font-awesome/css/all.min.css" rel="stylesheet" />
+    <!--Toastr Css-->
+    <link href="~/lib/toastr.js/toastr.min.css" rel="stylesheet" />
+    <!--Common Css-->
+    <link href="~/css/common.css" rel="stylesheet" />
+
     <!--JS-->
     <!--Jquery Js-->
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
@@ -27,6 +37,14 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <!--Site Js-->
     <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <!--Datatable Js-->
+    <script src="~/lib/datatable/js/datatable.min.js"></script>
+    <script src="~/lib/datatable/datatable.js"></script>
+    <!--Toastr Js-->
+    <script src="~/lib/toastr.js/toastr.min.js"></script>
+    <!--Common Js-->
+    <script src="~/js/common.js"></script>
 </head>
 <body>
     <header>
@@ -83,11 +101,21 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2024 - @ViewData["ApplicationName"] - <a asp-area="" asp-page="/Privacy">Privacy</a>
+            &copy; @(inceptionYear == currentYear ? inceptionYear : inceptionYear + "-" + currentYear) - @ViewData["ApplicationName"] - <a asp-area="" asp-page="/Privacy">Privacy</a>
         </div>
     </footer>
 
-
     @await RenderSectionAsync("Scripts", required: false)
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //var toastrJson = Html.Raw(JsonConvert.SerializeObject(TempData["ToastrModel"]));
+            var toastrJson = '@Html.Raw(TempData["ToastrModel"])';
+            console.log(toastrJson);
+            if (toastrJson != "") {
+                var toastrObject = JSON.parse(toastrJson);
+                ShowToastrMessages(toastrObject.Type, toastrObject.Message);
+            }
+        });
+    </script>
 </body>
 </html>
