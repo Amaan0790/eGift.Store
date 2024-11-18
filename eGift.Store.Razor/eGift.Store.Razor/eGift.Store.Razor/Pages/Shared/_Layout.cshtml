@@ -1,10 +1,15 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Http;
+
+@{
     ViewData["ApplicationName"] = "eGift";
     int inceptionYear = 2024;
     int currentYear = DateTime.Now.Year;
     // User sessions
-    int userID = 0;//Convert.ToInt32(Context.Session.GetInt32("UserID"));
-    string userName = "Amaan";//Context.Session.GetString("UserName");
+    int userID = Convert.ToInt32(Context.Session.GetInt32("UserID"));
+    string userName = Context.Session.GetString("UserName");
+    // Last login sessions
+    string loginDatetime = Context.Session.GetString("LoginDateTime");
+    string lastLogin = Context.Session.GetString("LastLogin");
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -65,7 +70,7 @@
                     {
                         <ul class="navbar-nav float-end">
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/Account/Index">Login</a>
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Account/Login">Login</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-page="/Customer/Create">Register</a>
@@ -85,7 +90,7 @@
                                 <a class="nav-link text-dark" asp-area="" asp-page="/Customer/Details">My Profile</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-page-handler="Logout" asp-area="" asp-page="/Account/Index"><b>Logout</b></a>
+                                <a class="nav-link text-dark" asp-page-handler="Logout" asp-area="" asp-page="/Account/Login"><b>Logout</b></a>
                             </li>
                         </ul>
                     }
@@ -101,21 +106,33 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; @(inceptionYear == currentYear ? inceptionYear : inceptionYear + "-" + currentYear) - @ViewData["ApplicationName"] - <a asp-area="" asp-page="/Privacy">Privacy</a>
-        </div>
-    </footer>
+            <div class="row align-items-center justify-content-between">
+                <div class="col-auto">
+                    &copy; @(inceptionYear == currentYear ? inceptionYear : inceptionYear + "-" + currentYear) - @ViewData["ApplicationName"] - <a asp-area="" asp-page="/Privacy">Privacy</a>
+                </div>
+                @if (userID > 0)
+                {
+                    <div class="col-auto">
+                        Login : <b>@loginDatetime</b>
+                    </div>
+                    <div class="col-auto">
+                        Last Login: <b>@lastLogin</b>
+                    </div>
+                }
+            </div>
+        </footer>
 
-    @await RenderSectionAsync("Scripts", required: false)
-    <script type="text/javascript">
-        $(document).ready(function () {
-            //var toastrJson = Html.Raw(JsonConvert.SerializeObject(TempData["ToastrModel"]));
-            var toastrJson = '@Html.Raw(TempData["ToastrModel"])';
-            console.log(toastrJson);
-            if (toastrJson != "") {
-                var toastrObject = JSON.parse(toastrJson);
-                ShowToastrMessages(toastrObject.Type, toastrObject.Message);
-            }
-        });
-    </script>
-</body>
-</html>
+                    @await RenderSectionAsync("Scripts", required: false)
+        <script type="text/javascript">
+            $(document).ready(function () {
+                //var toastrJson = Html.Raw(JsonConvert.SerializeObject(TempData["ToastrModel"]));
+                var toastrJson = '@Html.Raw(TempData["ToastrModel"])';
+                console.log(toastrJson);
+                if (toastrJson != "") {
+                    var toastrObject = JSON.parse(toastrJson);
+                    ShowToastrMessages(toastrObject.Type, toastrObject.Message);
+                }
+            });
+        </script>
+    </body>
+    </html>

@@ -20,11 +20,11 @@ namespace eGift.Store.Razor.Models.ViewModels
         [Required]
         public int RefId { get; set; }
 
-        [Display(Name = "RefType")]
+        [Display(Name = "Ref Type")]
         [Required]
         public string RefType { get; set; }
 
-        [Display(Name = "UserName")]
+        [Display(Name = "User Name")]
         [Required]
         public string UserName { get; set; }
 
@@ -36,21 +36,21 @@ namespace eGift.Store.Razor.Models.ViewModels
         [Required]
         public int RoleId { get; set; }
 
-        [Display(Name = "IsActive")]
+        [Display(Name = "Active")]
         [Required]
         public bool IsActive { get; set; } = true;
 
-        [Display(Name = "LogInDate")]
+        [Display(Name = "Login Date")]
         public DateTime? LogInDate { get; set; }
 
-        [Display(Name = "LastLogInDate")]
+        [Display(Name = "Last Login Date")]
         public DateTime? LastLogInDate { get; set; }
 
         #endregion Data Models
 
         #region View Models
 
-        [Display(Name = "ConfirmPassword")]
+        [Display(Name = "Confirm Password")]
         public string? ConfirmPassword { get; set; }
 
         #endregion View Models

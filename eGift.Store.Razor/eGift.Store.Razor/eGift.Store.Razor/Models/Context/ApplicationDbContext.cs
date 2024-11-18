@@ -34,5 +34,16 @@ namespace eGift.Store.Razor.Models.Context
         public DbSet<AddressViewModel> Address { get; set; }
 
         #endregion DBSets
+
+        #region On Model Creating
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<SignInViewModel>().HasNoKey();
+        }
+
+        public DbSet<eGift.Store.Razor.Models.SignInViewModel> SignInViewModel { get; set; } = default!;
+
+        #endregion
     }
 }
