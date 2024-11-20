@@ -17,27 +17,24 @@ namespace eGift.Store.Razor.Models.ViewModels
         public int ID { get; set; }
 
         [Display(Name = "Ref")]
-        [Required]
         public int RefId { get; set; }
 
         [Display(Name = "Ref Type")]
-        [Required]
-        public string RefType { get; set; }
+        public string? RefType { get; set; }
 
         [Display(Name = "User Name")]
-        [Required]
-        public string UserName { get; set; }
+        public string? UserName { get; set; }
 
         [Display(Name = "Password")]
-        [Required]
+        [Required(ErrorMessage = "This field is required.")]
+        [RegularExpression("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&#])[A-Za-z\\d@$!%*?&#]{8,}$",
+        ErrorMessage = "• At least one lowercase letter.<br/>• At least one uppercase letter.<br/>• At least one digit.<br/>• At least one special character.<br/>• Must be at least 8 characters long.")]
         public string Password { get; set; }
 
         [Display(Name = "Role")]
-        [Required]
         public int RoleId { get; set; }
 
         [Display(Name = "Active")]
-        [Required]
         public bool IsActive { get; set; } = true;
 
         [Display(Name = "Login Date")]
@@ -51,6 +48,7 @@ namespace eGift.Store.Razor.Models.ViewModels
         #region View Models
 
         [Display(Name = "Confirm Password")]
+        [Compare("Password", ErrorMessage = "Passwords do not match.")]
         public string? ConfirmPassword { get; set; }
 
         #endregion View Models

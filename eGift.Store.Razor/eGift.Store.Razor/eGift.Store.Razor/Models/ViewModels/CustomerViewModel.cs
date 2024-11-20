@@ -1,4 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using eGift.Store.Razor.Common;
+using eGift.Store.Razor.Helpers;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace eGift.Store.Razor.Models.ViewModels
@@ -9,6 +13,9 @@ namespace eGift.Store.Razor.Models.ViewModels
 
         public CustomerViewModel()
         {
+            GenderList = EnumHelper.EnumNameToSelectList<Gender>();
+            AddressList = new SelectList("");
+            LoginModel = new LoginViewModel();
         }
 
         #endregion Constructors
@@ -17,24 +24,25 @@ namespace eGift.Store.Razor.Models.ViewModels
 
         public int ID { get; set; }
 
-        [Display(Name = "FirstName")]
-        [Required]
+        [Display(Name = "First Name")]
+        [Required(ErrorMessage = "This field is required.")]
         public string FirstName { get; set; }
 
-        [Display(Name = "LastName")]
-        [Required]
+        [Display(Name = "Last Name")]
+        [Required(ErrorMessage = "This field is required.")]
         public string LastName { get; set; }
 
-        [Display(Name = "DateOfBirth")]
-        [Required]
+        [Display(Name = "Date Of Birth")]
+        [Required(ErrorMessage = "This field is required.")]
+        [DataType(DataType.Date)]
         public DateTime DateOfBirth { get; set; }
 
         [Display(Name = "Gender")]
-        [Required]
+        [Required(ErrorMessage = "This field is required.")]
         public int GenderId { get; set; }
 
         [Display(Name = "Mobile")]
-        [Required]
+        [Required(ErrorMessage = "This field is required.")]
         public string Mobile { get; set; }
 
         [Display(Name = "Email")]
@@ -43,22 +51,22 @@ namespace eGift.Store.Razor.Models.ViewModels
         [Display(Name = "Address")]
         public int? AddressId { get; set; }
 
-        [Display(Name = "IsActive")]
-        [Required]
+        [Display(Name = "Active")]
+        [Required(ErrorMessage = "This field is required.")]
         public bool IsActive { get; set; } = true;
 
-        [Display(Name = "ProfileImagePath")]
+        [Display(Name = "Profile Image Path")]
         public string? ProfileImagePath { get; set; }
 
-        [Display(Name = "ProfileImageData")]
+        [Display(Name = "Profile Image Data")]
         public byte[]? ProfileImageData { get; set; }
 
         [Display(Name = "Role")]
-        [Required]
+        [Required(ErrorMessage = "This field is required.")]
         public int RoleId { get; set; }
 
-        [Display(Name = "IsDefault")]
-        [Required]
+        [Display(Name = "Default")]
+        [Required(ErrorMessage = "This field is required.")]
         public bool IsDefault { get; set; } = false;
 
         #endregion Data Models
@@ -84,6 +92,23 @@ namespace eGift.Store.Razor.Models.ViewModels
         [Display(Name = "Profile Image")]
         public IFormFile? ProfileImage { get; set; }
 
+        [NotMapped]
+        public bool IsClear { get; set; }
+
         #endregion View Models
+
+        #region Reference View Model
+
+        public LoginViewModel LoginModel { get; set; }
+
+        #endregion
+
+        #region Dropdown Models
+
+        public SelectList GenderList { get; set; }
+
+        public SelectList AddressList { get; set; }
+
+        #endregion
     }
 }

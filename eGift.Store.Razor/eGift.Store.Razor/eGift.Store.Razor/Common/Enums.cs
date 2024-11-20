@@ -72,6 +72,19 @@ namespace eGift.Store.Razor.Common
         // Logout
         [Description("Logout successfully.")]
         LogoutSuccess = 5,
+
+        // Customer
+        [Description("Customer register successfully.")]
+        CustomerCreateSuccess = 6,
+
+        [Description("Unable to register customer.")]
+        CustomerCreateError = 7,
+
+        [Description("Profile updated successfully.")]
+        CustomerEditSuccess = 8,
+
+        [Description("Unable to update profile.")]
+        CustomerEditError = 9,
     }
 
     #endregion
