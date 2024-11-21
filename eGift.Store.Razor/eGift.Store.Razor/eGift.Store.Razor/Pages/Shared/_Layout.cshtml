@@ -87,7 +87,7 @@
                                 <a class="nav-link text-dark" asp-area="" asp-page="/Order/Index">My Orders</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/Customer/Details">My Profile</a>
+                                <a class="nav-link text-dark" asp-route-id="@userID" asp-area="" asp-page="/Customer/Details">My Profile</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-page-handler="Logout" asp-area="" asp-page="/Account/Login"><b>Logout</b></a>

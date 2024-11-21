@@ -1,0 +1,108 @@
+﻿@page
+@model eGift.Store.Razor.Pages.Customer.DetailsModel
+@using eGift.Store.Razor.Helpers
+
+@{
+    ViewData["MainTitle"] = "Customer";
+    ViewData["Title"] = "My Profile";
+    var defaultImageUrl = Url.Content("~/images/default/user_default_image.png");
+}
+
+<h1>@ViewData["MainTitle"]</h1>
+<h4>@ViewData["Title"]</h4>
+<hr />
+
+<div class="row">
+    <div class="col-sm-4">
+        <div>
+            <dl class="col-sm-12">
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.CustomerViewModel.FirstName)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.CustomerViewModel.FirstName)
+                </dd>
+
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.CustomerViewModel.LastName)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.CustomerViewModel.LastName)
+                </dd>
+
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.CustomerViewModel.DateOfBirth)
+                </dt>
+                <dd class="col-sm-8">
+                    @Model.CustomerViewModel.DateOfBirth.ToDateString()
+                </dd>
+
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.CustomerViewModel.Age)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.CustomerViewModel.Age)
+                </dd>
+
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.CustomerViewModel.Mobile)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.CustomerViewModel.Mobile)
+                </dd>
+
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.CustomerViewModel.Email)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.CustomerViewModel.Email)
+                </dd>
+
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.CustomerViewModel.AddressName)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.CustomerViewModel.AddressName)
+                </dd>
+
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.CustomerViewModel.GenderName)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.CustomerViewModel.GenderName)
+                </dd>
+
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.CustomerViewModel.RoleName)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.CustomerViewModel.RoleName)
+                </dd>
+
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.CustomerViewModel.IsActive)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.CustomerViewModel.IsActive)
+                </dd>
+            </dl>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="mb-2 align-text-center">
+            @if (Model.CustomerViewModel.ProfileImageData == null)
+            {
+                <img id="customer-profile-image-preview" src="@defaultImageUrl" class="profile-image" />
+            }
+            else
+            {
+                <!--How to bind byte array in img tag-->
+                <img id="customer-profile-image-preview" src="data:image/*;base64,@Convert.ToBase64String(Model.CustomerViewModel.ProfileImageData)" class="profile-image" />
+            }
+        </div>
+    </div>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.CustomerViewModel.ID" class="btn btn-primary">Manage Profile</a> |
+    <a asp-page="/Index">Back to List</a>
+</div>

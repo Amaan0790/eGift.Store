@@ -105,8 +105,10 @@ namespace eGift.Store.Razor.Models.ViewModels
 
         #region Dropdown Models
 
+        [NotMapped]
         public SelectList GenderList { get; set; }
 
+        [NotMapped]
         public SelectList AddressList { get; set; }
 
         #endregion
