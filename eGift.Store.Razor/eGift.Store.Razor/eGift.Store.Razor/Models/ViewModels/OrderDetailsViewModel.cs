@@ -17,19 +17,15 @@ namespace eGift.Store.Razor.Models.ViewModels
         public int ID { get; set; }
 
         [Display(Name = "Order")]
-        [Required]
         public int OrderId { get; set; }
 
         [Display(Name = "Product")]
-        [Required]
         public int ProductId { get; set; }
 
         [Display(Name = "UnitPrice")]
-        [Required]
         public decimal UnitPrice { get; set; }
 
         [Display(Name = "Quantity")]
-        [Required]
         public int Quantity { get; set; }
 
         [Display(Name = "Discount")]
@@ -38,10 +34,16 @@ namespace eGift.Store.Razor.Models.ViewModels
         [Display(Name = "Tax")]
         public decimal? Tax { get; set; }
 
-        [Display(Name = "NetAmount")]
-        [Required]
+        [Display(Name = "Price")]
         public decimal NetAmount { get; set; }
 
         #endregion Data Models
+
+        #region View Models
+
+        [Display(Name = "Product Name")]
+        public string ProductName { get; set; }
+
+        #endregion
     }
 }

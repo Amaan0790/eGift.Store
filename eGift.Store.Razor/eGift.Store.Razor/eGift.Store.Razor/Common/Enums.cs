@@ -85,6 +85,12 @@ namespace eGift.Store.Razor.Common
 
         [Description("Unable to update profile.")]
         CustomerEditError = 9,
+
+        [Description("Product added to cart.")]
+        ProductAddToCartSuccess = 10,
+
+        [Description("Unable to add product to cart.")]
+        ProductAddToCartError = 11,
     }
 
     #endregion
