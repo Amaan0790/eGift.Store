@@ -29,6 +29,27 @@ namespace eGift.Store.Razor.Common
         Admin = 3
     }
 
+    public enum Status
+    {
+        [Description("New")]
+        New = 1,
+
+        [Description("Dispatched")]
+        Dispatched = 2,
+
+        [Description("Shipped")]
+        Shipped = 3,
+
+        [Description("Delivered")]
+        Delivered = 4,
+
+        [Description("Cancelled")]
+        Cancelled = 5,
+
+        [Description("Completed")]
+        Completed = 6,
+    }
+
     #endregion
 
     #region Toastr
@@ -91,6 +112,13 @@ namespace eGift.Store.Razor.Common
 
         [Description("Unable to add product to cart.")]
         ProductAddToCartError = 11,
+
+        // Place Order
+        [Description("Order placed successfully.")]
+        PlaceOrderSuccess = 12,
+
+        [Description("Unable to place order.")]
+        PlaceOrderError = 13,
     }
 
     #endregion

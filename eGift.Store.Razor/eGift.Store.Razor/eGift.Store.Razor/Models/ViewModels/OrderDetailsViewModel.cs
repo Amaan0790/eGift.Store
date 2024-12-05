@@ -44,6 +44,12 @@ namespace eGift.Store.Razor.Models.ViewModels
         [Display(Name = "Product Name")]
         public string ProductName { get; set; }
 
+        [Display(Name = "Discount Amount")]
+        public decimal DiscountAmount { get; set; }
+
+        [Display(Name = "Tax Amount")]
+        public decimal TaxAmount { get; set; }
+
         #endregion
     }
 }

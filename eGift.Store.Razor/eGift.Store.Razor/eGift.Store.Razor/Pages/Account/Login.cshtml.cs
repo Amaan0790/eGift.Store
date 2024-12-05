@@ -142,7 +142,10 @@ namespace eGift.Store.Razor.Pages.Account
             HttpContext.Session.Clear();
 
             // Clear all cart items
-            TempCartData.Items.Clear();
+            if (TempCartData.Items != null)
+            {
+                TempCartData.Items.Clear();
+            }
 
             // Toastr Message
             var tosterModel = new ToastrViewModel()

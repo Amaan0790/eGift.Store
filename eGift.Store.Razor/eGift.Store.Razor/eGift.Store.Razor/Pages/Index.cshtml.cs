@@ -52,7 +52,7 @@ namespace eGift.Store.Razor.Pages
 
         #endregion
 
-        #region Login Ajax Actions
+        #region Ajax Actions
 
         public JsonResult OnPostLogin(string userName, string password)
         {
@@ -139,7 +139,6 @@ namespace eGift.Store.Razor.Pages
 
         public JsonResult OnPostAddToCart(int productId)
         {
-            //ToastrViewModel tosterModel = null;
             try
             {
                 // Web client api call
@@ -156,6 +155,7 @@ namespace eGift.Store.Razor.Pages
                             {
                                 existingProduct.Quantity += 1;
                                 existingProduct.NetAmount = (existingProduct.UnitPrice - (productModel.UnitPrice * (productModel.Discount ?? 0) / 100)) * existingProduct.Quantity;
+                                existingProduct.DiscountAmount = existingProduct.Quantity * (existingProduct.UnitPrice * (existingProduct.Discount ?? 0) / 100);
                             }
                         }
                         else
@@ -171,21 +171,15 @@ namespace eGift.Store.Razor.Pages
                                 Quantity = 1,
                                 UnitPrice = productModel.UnitPrice,
                                 Discount = productModel.Discount,
+                                DiscountAmount = productModel.UnitPrice * (productModel.Discount ?? 0) / 100,
 
                                 //Tax = existingProduct.Tax,
+                                //TaxAmount = productModel.UnitPrice * (productModel.Tax ?? 0) / 100
                                 NetAmount = productModel.UnitPrice - (productModel.UnitPrice * (productModel.Discount ?? 0) / 100)
                             };
                             TempCartData.Items.Add(orderDetailModel);
                         }
 
-                        //tosterModel = new ToastrViewModel()
-                        //{
-                        //    Type = (int)ToastrType.Success,
-                        //    Message = ToastrMessages.ProductAddToCartSuccess.GetEnumDescription<ToastrMessages>()
-                        //};
-
-                        //// Serialize the model to JSON before storing it in TempData
-                        //TempData["ToastrModel"] = JsonConvert.SerializeObject(tosterModel);
                         return new JsonResult(true);
                     }
                 }
@@ -194,14 +188,6 @@ namespace eGift.Store.Razor.Pages
             {
             }
 
-            //tosterModel = new ToastrViewModel()
-            //{
-            //    Type = (int)ToastrType.Error,
-            //    Message = ToastrMessages.ProductAddToCartError.GetEnumDescription<ToastrMessages>()
-            //};
-
-            //// Serialize the model to JSON before storing it in TempData
-            //TempData["ToastrModel"] = JsonConvert.SerializeObject(tosterModel);
             return new JsonResult(false);
         }
 
