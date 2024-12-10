@@ -62,3 +62,8 @@ label.required::after {
     max-height: 200px;
     object-fit: contain;
 }
+
+.my-order-image {
+    max-height: 150px;
+    object-fit: contain;
+}

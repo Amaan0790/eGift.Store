@@ -50,6 +50,30 @@ namespace eGift.Store.Razor.Models.ViewModels
         [Display(Name = "Tax Amount")]
         public decimal TaxAmount { get; set; }
 
+        [Display(Name = "Product Image")]
+        public byte[]? ProductImageData { get; set; }
+
+        [Display(Name = "Order Number")]
+        public string? OrderNumber { get; set; }
+
+        [Display(Name = "Notes")]
+        public string? Notes { get; set; }
+
+        [Display(Name = "Dispatched Date")]
+        public DateTime? DispatchedDate { get; set; }
+
+        [Display(Name = "Shipped Date")]
+        public DateTime? ShippedDate { get; set; }
+
+        [Display(Name = "Delivery Date")]
+        public DateTime? DeliveryDate { get; set; }
+
+        [Display(Name = "Cancel Date")]
+        public DateTime? CancelDate { get; set; }
+
+        [Display(Name = "Status")]
+        public int StatusId { get; set; }
+
         #endregion
     }
 }
