@@ -1,4 +1,5 @@
 ﻿@page
+@using eGift.Store.Razor.Common
 @using eGift.Store.Razor.Helpers
 @model eGift.Store.Razor.Pages.Order.IndexModel
 @{
@@ -41,28 +42,33 @@
                     </div>
                     <div class="col-md-3">
                         <div class="card-body">
-                            <h6><i class="fa fa-rupee"></i> @order.NetAmount</h6>
+                            <h6>&#8377; @order.NetAmount</h6>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="card-body">
-                            @if (order.StatusId == 5)
+                            @if (order.StatusId == 6)
                             {
-                                <h6>@order.StatusId.ToString() on @order.CancelDate.ToDateString()</h6>
+                                <h6>@((Status)order.StatusId) on @order.UpdatedDate.ToDateString()</h6>
+                            }
+                            else if (order.StatusId == 5)
+                            {
+                                <h6>@((Status)order.StatusId) on @order.CancelDate.ToDateString()</h6>
+
                             }
                             else if (order.StatusId == 4)
                             {
-                                <h6>@order.StatusId.ToString() on @order.DeliveryDate.ToDateString()</h6>
+                                <h6>@((Status)order.StatusId) on @order.DeliveryDate.ToDateString()</h6>
 
                             }
                             else if (order.StatusId == 3)
                             {
-                                <h6>@order.StatusId.ToString() on @order.ShippedDate.ToDateString()</h6>
+                                <h6>@((Status)order.StatusId) on @order.ShippedDate.ToDateString()</h6>
 
                             }
                             else if (order.StatusId == 2)
                             {
-                                <h6>@order.StatusId.ToString() on @order.DispatchedDate.ToDateString()</h6>
+                                <h6>@((Status)order.StatusId) on @order.DispatchedDate.ToDateString()</h6>
 
                             }
                             else if (order.StatusId == 1)
