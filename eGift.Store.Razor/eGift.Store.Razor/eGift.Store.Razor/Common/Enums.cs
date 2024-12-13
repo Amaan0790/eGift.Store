@@ -50,6 +50,39 @@ namespace eGift.Store.Razor.Common
         Completed = 6,
     }
 
+    public enum Size
+    {
+        [Description("Extra Small")]
+        XS = 1,
+
+        [Description("Small")]
+        S = 2,
+
+        [Description("Medium")]
+        M = 3,
+
+        [Description("Large")]
+        L = 4,
+
+        [Description("Extra Large")]
+        XL = 5,
+
+        [Description("2X Large")]
+        XXL = 6,
+
+        [Description("3X Large")]
+        XXXL = 7,
+
+        [Description("4X Large")]
+        XXXXL = 8,
+
+        [Description("5X Large")]
+        XXXXXL = 9,
+
+        [Description("One Size")]
+        OneSize = 10
+    }
+
     #endregion
 
     #region Toastr

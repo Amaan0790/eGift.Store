@@ -1,0 +1,156 @@
+﻿@page
+@using eGift.Store.Razor.Common
+@using eGift.Store.Razor.Helpers
+@model eGift.Store.Razor.Pages.DetailsModel
+
+@{
+    ViewData["MainTitle"] = "Product";
+    ViewData["Title"] = "Details";
+    var defaultImageUrl = Url.Content("~/images/default/default-product-image.png");
+}
+
+<h1>@ViewData["MainTitle"]</h1>
+<h4>@ViewData["Title"]</h4>
+<hr />
+
+<div class="row">
+    <div class="col-md-6">
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="data:image/*;base64,@Convert.ToBase64String(Model.ProductViewModel.ProductImageData)" class="d-block w-100" alt="...">
+                </div>
+                @if(Model.ProductViewModel.PictureData1 != null)
+                {
+                    <div class="carousel-item">
+                        <img src="data:image/*;base64,@Convert.ToBase64String(Model.ProductViewModel.PictureData1)" class="d-block w-100" alt="...">
+                    </div>
+                }
+                
+                @if (Model.ProductViewModel.PictureData2 != null)
+                {
+                    <div class="carousel-item">
+                        <img src="data:image/*;base64,@Convert.ToBase64String(Model.ProductViewModel.PictureData2)" class="d-block w-100" alt="...">
+                    </div>
+                }
+
+                @if (Model.ProductViewModel.PictureData3 != null)
+                {
+                    <div class="carousel-item">
+                        <img src="data:image/*;base64,@Convert.ToBase64String(Model.ProductViewModel.PictureData3)" class="d-block w-100" alt="...">
+                    </div>
+                }
+
+                @if (Model.ProductViewModel.PictureData4 != null)
+                {
+                    <div class="carousel-item">
+                        <img src="data:image/*;base64,@Convert.ToBase64String(Model.ProductViewModel.PictureData4)" class="d-block w-100" alt="...">
+                    </div>
+                }
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <dl class="row">
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.ProductViewModel.Name)
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.ProductViewModel.Name)
+            </dd>
+
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.ProductViewModel.CategoryName)
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.ProductViewModel.CategoryName)
+            </dd>
+
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.ProductViewModel.SubCategoryName)
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.ProductViewModel.SubCategoryName)
+            </dd>
+
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.ProductViewModel.SizeName)
+            </dt>
+            <dd class="col-sm-8">
+                @(((Size)Model.ProductViewModel.SizeId).GetEnumDescription<Size>())
+            </dd>
+
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.ProductViewModel.UnitPrice)
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.ProductViewModel.UnitPrice)
+            </dd>
+
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.ProductViewModel.QuantityPerUnit)
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.ProductViewModel.QuantityPerUnit)
+            </dd>
+
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.ProductViewModel.Discount)
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.ProductViewModel.Discount)
+            </dd>
+
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.ProductViewModel.UnitInStock)
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.ProductViewModel.UnitInStock)
+            </dd>
+
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.ProductViewModel.ProductAvailable)
+            </dt>
+            <dd class="col-sm-8">
+                @if (Model.ProductViewModel.UnitInStock > 0)
+                {
+                    <span class="badge rounded-pill bg-success">Available</span>
+                }
+                else
+                {
+                    <span class="badge rounded-pill bg-danger">Out Of Stock</span>
+                }
+            </dd>
+
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.ProductViewModel.ShortDescription)
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.ProductViewModel.ShortDescription)
+            </dd>
+
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.ProductViewModel.LongDescription)
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.ProductViewModel.LongDescription)
+            </dd>
+        </dl>
+    </div>
+</div>
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>

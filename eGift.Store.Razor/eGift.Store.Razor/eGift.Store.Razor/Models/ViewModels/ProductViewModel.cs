@@ -25,14 +25,14 @@ namespace eGift.Store.Razor.Models.ViewModels
         [Required]
         public int CategoryId { get; set; }
 
-        [Display(Name = "SubCategory")]
+        [Display(Name = "Sub Category")]
         [Required]
         public int SubCategoryId { get; set; }
 
-        [Display(Name = "QuantityPerPrice")]
-        public int? QuantityPerPrice { get; set; }
+        [Display(Name = "Quantity Per Unit")]
+        public int? QuantityPerUnit { get; set; }
 
-        [Display(Name = "UnitPrice")]
+        [Display(Name = "Unit Price")]
         [Required]
         public decimal UnitPrice { get; set; }
 
@@ -42,50 +42,50 @@ namespace eGift.Store.Razor.Models.ViewModels
         [Display(Name = "Discount")]
         public decimal? Discount { get; set; }
 
-        [Display(Name = "UnitInStock")]
+        [Display(Name = "Unit In Stock")]
         public int? UnitInStock { get; set; }
 
-        [Display(Name = "UnitInOrder")]
+        [Display(Name = "Unit In Order")]
         public int? UnitInOrder { get; set; }
 
-        [Display(Name = "ProductAvailable")]
+        [Display(Name = "Product Available")]
         public int? ProductAvailable { get; set; }
 
-        [Display(Name = "ShortDescription")]
+        [Display(Name = "Short Description")]
         public string? ShortDescription { get; set; }
 
-        [Display(Name = "LongDescription")]
+        [Display(Name = "Long Description")]
         public string? LongDescription { get; set; }
 
-        [Display(Name = "PicturePath1")]
+        [Display(Name = "Picture Path 1")]
         public string? PicturePath1 { get; set; }
 
-        [Display(Name = "PicturePath2")]
+        [Display(Name = "Picture Path 2")]
         public string? PicturePath2 { get; set; }
 
-        [Display(Name = "PicturePath3")]
+        [Display(Name = "Picture Path 3")]
         public string? PicturePath3 { get; set; }
 
-        [Display(Name = "PicturePath4")]
+        [Display(Name = "Picture Path 4")]
         public string? PicturePath4 { get; set; }
 
-        [Display(Name = "PictureData1")]
+        [Display(Name = "Picture Data 1")]
         public byte[]? PictureData1 { get; set; }
 
-        [Display(Name = "PictureData2")]
+        [Display(Name = "Picture Data 2")]
         public byte[]? PictureData2 { get; set; }
 
-        [Display(Name = "PictureData3")]
+        [Display(Name = "Picture Data 3")]
         public byte[]? PictureData3 { get; set; }
 
-        [Display(Name = "PictureData4")]
+        [Display(Name = "Picture Data 4")]
         public byte[]? PictureData4 { get; set; }
 
-        [Display(Name = "ProductImagePath")]
+        [Display(Name = "Product Image Path")]
         [Required]
         public string ProductImagePath { get; set; }
 
-        [Display(Name = "ProductImageData")]
+        [Display(Name = "Product Image Data")]
         [Required]
         public byte[] ProductImageData { get; set; }
 
@@ -94,29 +94,29 @@ namespace eGift.Store.Razor.Models.ViewModels
         #region View Models
 
         [NotMapped]
-        [Display(Name = "ImageUrl")]
+        [Display(Name = "Image Url")]
         public IFormFile? ImageUrl { get; set; }
 
         [NotMapped]
-        [Display(Name = "Picture1")]
+        [Display(Name = "Picture 1")]
         public IFormFile? Picture1 { get; set; }
 
         [NotMapped]
-        [Display(Name = "Picture2")]
+        [Display(Name = "Picture 2")]
         public IFormFile? Picture2 { get; set; }
 
         [NotMapped]
-        [Display(Name = "Picture3")]
+        [Display(Name = "Picture 3")]
         public IFormFile? Picture3 { get; set; }
 
         [NotMapped]
-        [Display(Name = "Picture4")]
+        [Display(Name = "Picture 4")]
         public IFormFile? Picture4 { get; set; }
 
         [Display(Name = "Category")]
         public string? CategoryName { get; set; }
 
-        [Display(Name = "SubCategory")]
+        [Display(Name = "Sub Category")]
         public string? SubCategoryName { get; set; }
 
         [Display(Name = "Size")]
