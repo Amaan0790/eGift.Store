@@ -1,19 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using eGift.Store.Razor.Common;
+using eGift.Store.Razor.Helpers;
+using eGift.Store.Razor.Models;
+using eGift.Store.Razor.Models.RequestModels;
+using eGift.Store.Razor.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
-using eGift.Store.Razor.Models.Context;
-using eGift.Store.Razor.Models.ViewModels;
-using eGift.Store.Razor.Models;
-using eGift.Store.Razor.Helpers;
-using eGift.Store.Razor.Models.ListViewModels;
 using Newtonsoft.Json;
 using System.Text;
-using eGift.Store.Razor.Common;
-using eGift.Store.Razor.Models.RequestModels;
 
 namespace eGift.Store.Razor.Pages.Checkout
 {

@@ -6,7 +6,6 @@ using eGift.Store.Razor.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Newtonsoft.Json;
-using System.Collections.Generic;
 
 namespace eGift.Store.Razor.Pages
 {
