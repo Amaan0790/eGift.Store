@@ -148,6 +148,7 @@ namespace eGift.Store.Razor.Pages
                     var productModel = JsonConvert.DeserializeObject<ProductViewModel>(response);
                     if (productModel != null)
                     {
+                        int availableQuantities;
                         if (TempCartData.Items != null && TempCartData.Items.Any(x => x.ProductId == productId))
                         {
                             var existingProduct = TempCartData.Items.FirstOrDefault(x => x.ProductId == productId);
@@ -157,6 +158,7 @@ namespace eGift.Store.Razor.Pages
                                 existingProduct.NetAmount = (existingProduct.UnitPrice - (productModel.UnitPrice * (productModel.Discount ?? 0) / 100)) * existingProduct.Quantity;
                                 existingProduct.DiscountAmount = existingProduct.Quantity * (existingProduct.UnitPrice * (existingProduct.Discount ?? 0) / 100);
                             }
+                            availableQuantities = productModel.UnitInStock ?? 0 - existingProduct.Quantity;
                         }
                         else
                         {
@@ -178,9 +180,10 @@ namespace eGift.Store.Razor.Pages
                                 NetAmount = productModel.UnitPrice - (productModel.UnitPrice * (productModel.Discount ?? 0) / 100)
                             };
                             TempCartData.Items.Add(orderDetailModel);
+                            availableQuantities = productModel.UnitInStock ?? 0 - orderDetailModel.Quantity;
                         }
 
-                        return new JsonResult(true);
+                        return new JsonResult(new { IsSuccess = true, AvailableQuantities = availableQuantities });
                     }
                 }
             }
@@ -188,7 +191,7 @@ namespace eGift.Store.Razor.Pages
             {
             }
 
-            return new JsonResult(false);
+            return new JsonResult(new { IsSuccess = false });
         }
 
         #endregion

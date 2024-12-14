@@ -44,17 +44,30 @@
                                 <li class="list-group-item"><b><i class="fa fa-inr" aria-hidden="true"></i> @product.UnitPrice</b></li>
                                 <li class="list-group-item">Cateogory - @product.CategoryName</li>
                                 <li class="list-group-item">Sub Cateogory - @product.SubCategoryName</li>
+                                <li class="list-group-item">
+                                    @if (product.UnitInStock > 0)
+                                    {
+                                        <span class="badge rounded-pill bg-success">Available(@product.UnitInStock)</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge rounded-pill bg-danger">Out Of Stock</span>
+                                    }
+                                </li>
                             </ul>
                         </div>
                         <div class="card-footer">
-                            <a href="#" class="btn btn-primary">Details</a>
-                            @if (userID > 0)
+                            <a asp-page="/Details" asp-route-id="@product.ID" class="btn btn-primary">Details</a>
+                            @if (product.UnitInStock > 0)
                             {
-                                <button type="button" data-id="@product.ID" class="btn btn-primary add-to-cart">Add to Cart</button>
-                            }
-                            else
-                            {
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">Add to Cart</button>
+                                @if (userID > 0)
+                                {
+                                    <button type="button" data-id="@product.ID" class="btn btn-primary add-to-cart">Add to Cart</button>
+                                }
+                                else
+                                {
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">Add to Cart</button>
+                                }
                             }
                         </div>
                     </div>
